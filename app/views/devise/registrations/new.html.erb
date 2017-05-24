@@ -1,0 +1,15 @@
+<div class="round-and-shaded signup clearfix">
+  <center>
+    <h2>Sign up</h2>
+  </center>
+
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= devise_error_messages! %>
+    <%= f.input :email, input_html: { autofocus: true } %> 
+    <%= f.input :password, input_html: { autocomplete: "off"} %>
+    <%= f.input :password_confirmation, input_html: { autocomplete: "off"} %>
+    <%= f.submit "Sign up", class: "btn btn-primary btn-large pull-right" %>
+  <% end %>
+
+  <%= render "devise/shared/links" %>
+</div>

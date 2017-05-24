@@ -1,0 +1,17 @@
+<div class="round-and-shaded signup clearfix">
+  <center>
+    <h2>Sign in</h2>
+  </center>
+
+  <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'form-horizontal' }) do |f| %>
+    <%= f.input :email, input_html: { autofocus: true } %>
+    <%= f.input :password, input_html: { autocomplete: "off"} %>
+    <% if devise_mapping.rememberable? -%>
+      <%= f.input :remember_me, as: :boolean, input_html: {checked: false} %>
+    <% end %>
+    <%= f.submit "Log in", class: "btn btn-primary btn-large pull-right" %>
+
+  <% end %>
+
+  <%= render "devise/shared/links" %>
+</div>
