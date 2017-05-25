@@ -32,6 +32,10 @@ gem 'simple_form'
 
 gem 'glyphicons-rails'
 
+gem 'cocoon', '~> 1.2', '>= 1.2.10'
+
+gem 'haml', '~> 5.0', '>= 5.0.1'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
