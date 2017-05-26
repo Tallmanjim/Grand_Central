@@ -2,7 +2,7 @@ class CompaniesController < ApplicationController
   before_action :set_company, only: [:show, :edit, :update, :destroy]
 
   def index
-    @companies = Company.all
+    
   end
 
   def show
@@ -16,7 +16,7 @@ class CompaniesController < ApplicationController
   end
 
   def create
-    @company = Company.new(company_params)
+    @company = current_user.companies.new(company_params)
 
     respond_to do |format|
       if @company.save
@@ -56,6 +56,6 @@ class CompaniesController < ApplicationController
     end
 
     def company_params
-      params.require(:company).permit(:name, :shortname, staff_attributes: [:id, :description, :done, :_destroy])
+      params.require(:company).permit(:name, :shortname, staff_members_attributes: [:id, :company_id, :name, :done, :_destroy], projects_attributes: [:id, :company_id, :name, :done, :_destroy])
     end
 end

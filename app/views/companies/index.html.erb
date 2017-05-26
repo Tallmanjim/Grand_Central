@@ -1,48 +1,8 @@
-<div class="span9">
-  <div id="flash-message"> 
+
+<% @companies.each do |c| %>
+  <div class="card">
+    <div class="card-block">
+      <h4 class="card-title"><%= link_to c.name, company_path(c) %></h4>
+    </div>
   </div>
-  <div class="well">
-
-    <% @companies.each do |c| %>
-      <div class="project-block">
-        <div class="row-fluid">
-          <h4 class="span9">
-          <%= link_to c.name, company_path(c) %>
-          </h4>
-          <div class="span3"></div>
-        </div>
-      </div>
-    <% end %>
-
-
-
-
-
-
-
-  </div>
-</div>
-<div class="span3">
-  <div>
-    <ul class="nav nav-stacked">
-      <li>
-        <a href="/companies/new">
-          <span class="navico">
-            <i class="glyphicon glyphicon-plus"></i>
-          </span>
-          add a new company
-        </a>
-      </li>
-    </ul>
-  </div>
-  <div class="clearfix assets">
-  </div>
-</div>
-
-
-
-
-
-
-
-
+<% end %>

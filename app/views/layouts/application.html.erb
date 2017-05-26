@@ -3,6 +3,8 @@
 	<head>
 
     <title>Grand Central</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -10,39 +12,64 @@
 	</head>
 
 	<body>
-		<div id="wrap">
-			<div class="container-fluid">
-				<!-- Navigation -->
-				<div class="row-fluid"> 
-					<div class="navbar navbar-fixed-top">
-						<div class="navbar-inner">
-							<div class="container-fluid">
-								<a class="brand" href="/">Grand Central</a>
-								<ul class="nav">
-									<li class="dropdown">
-										<a id="drop1" class="dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-											Companies
-											<b class="caret"></b>
-										</a>
-									</li>
-								</ul>
-								<ul class="nav pull-right">
-									<li class="dropdown">
-										<%= link_to "Log out", destroy_user_session_path, method: :delete %>
-									</li>
-								</ul>
-							</div>
-						</div>
-					</div> 
-				</div>
-				<!-- Content -->
-				<div class="row-fluid">
-					<%= yield %>
-				</div>
+		<!-- NavBar -->
+		<div class="container-fluid">
+			<nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-primary"> 
+				<%= link_to "Grand Central", root_url, class: "navbar-brand" %>
+				<ul class="navbar-nav mr-auto">
+			 		<li class="nav-item active dropdown">
+			      <a class="nav-link dropdown-toggle" href="#" id="companyDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			        Companies
+			      </a>
+			      <div class="dropdown-menu" aria-labelledby="companyDropdownMenuLink">
+			      	<% @companies.each do |c| %> 
+			        	<%= link_to c.name, company_path(c), class: "dropdown-item" %>
+			      	<% end %>
+			        <div class="dropdown-divider"></div>
+			        <%= link_to "New Company", new_company_path, class: "dropdown-item" %>
+			      </div>
+			    </li>
+			    <% if (@company.persisted? rescue false) %>
+			 			<li class="nav-item active">
+							<%= link_to @company.name, "#", class: "nav-link" %>
+			 			</li>
+			    <% end %>
+				</ul>
+				<ul class="navbar-nav">
+      		<li class="nav-item active">
+						<%= link_to "Log out", destroy_user_session_path, method: :delete, class: "btn btn-success" %>
+					</li>
+				</ul>
+			</nav>
+		</div>
+		<!-- Content -->
+		<div class="container-fluid">
+			<div class="row">
+			  <div class="col-9">
+			  <%= yield %>
+			  </div>
+			  <div class="col-3">
+			    <div class="card">
+			      <div class="col-8">
+			      	<i class="fa fa-plus-square-o fa-fw"></i>
+			        <%= link_to "New Company", new_company_path %>
+			      </div>
+			    </div>
+			    <% if (@company.persisted? rescue false) && !(["edit", "update"].include?(action_name) && controller_name == "companies") %>
+			      <div class="card">
+			        <div class="col-8">
+			      		<i class="fa fa-pencil-square-o  fa-fw"></i>
+			          <%= link_to "Edit Company", edit_company_path(@company) %>
+			        </div>
+			      </div>
+			    <% end %> 
+			  </div>
 			</div>
 		</div>
 	</body>
 </html>
+
+
 
 
 

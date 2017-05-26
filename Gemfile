@@ -26,11 +26,11 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'devise'
 
-gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
+gem 'bootstrap', '~> 4.0.0.alpha6'
 
 gem 'simple_form'
 
-gem 'glyphicons-rails'
+gem "font-awesome-rails"
 
 gem 'cocoon', '~> 1.2', '>= 1.2.10'
 
@@ -39,7 +39,7 @@ gem 'haml', '~> 5.0', '>= 5.0.1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platform: :mri
+  gem 'pry'
 end
 
 group :development do
