@@ -3,10 +3,19 @@
   <%= @company.name %>
 </p>
 
-<p>
-  <strong>Shortname:</strong>
-  <%= @company.shortname %>
-</p>
+<h2> Staff Members </h2>
+<ul>
+  <% @company.staff_members.each do |staff| %>
+  <li> <%= staff.name %></li>
+  <% end %>
+</ul>
+
+<h2> Projects </h2>
+<ul>
+  <% @company.projects.each do |project| %>
+  <li> <%= project.name %></li>
+  <% end %>
+</ul>
 
 <%= link_to 'Edit', edit_company_path(@company) %> |
 <%= link_to 'Back', companies_path %>

@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   def load_companies
     # Had to change this statement because it included companies without ID's
     # @companies = current_user.companies
-    @companies = Company.where(user_id: current_user.id)
+    @companies = Company.where(user_id: current_user.try(:id))
   end
 
   def layout_by_resource

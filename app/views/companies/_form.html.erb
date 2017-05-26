@@ -1,12 +1,32 @@
 <%= simple_form_for(@company) do |f| %>
-  <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :name %>
-    <%= f.input :shortname %>
-  </div>
+ <%= f.error_notification %>
+ 
+ <div class="form-inputs">
+   <%= f.input :name %>
+ </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
+ <h3>Staff Members</h3>
+ <div id="staff_members">
+   <%= f.simple_fields_for :staff_members do |sm| %>
+     <%= render 'staff_member_fields', f: sm %>
+   <% end %>
+   <div class="links">
+     <%= link_to_add_association 'Add staff member', f, :staff_members %>
+   </div>
+ </div>
+
+ <h3>Projects</h3>
+ <div id="projects">
+   <%= f.simple_fields_for :projects do |sm| %>
+     <%= render 'project_fields', f: sm %>
+   <% end %>
+   <div class="links">
+     <%= link_to_add_association 'Add project', f, :projects %>
+   </div>
+ </div>
+
+ <div class="form-actions">
+   <%= f.submit %>
+ </div>
 <% end %>

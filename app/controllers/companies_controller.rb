@@ -16,7 +16,7 @@ class CompaniesController < ApplicationController
   end
 
   def create
-    @companies = current_user.companies.new(company_params)
+    @company = current_user.companies.new(company_params)
 
     respond_to do |format|
       if @company.save
@@ -56,6 +56,7 @@ class CompaniesController < ApplicationController
     end
 
     def company_params
-      params.require(:company).permit(:name, :shortname, staff_members_attributes: [:id, :company_id, :name, :done, :_destroy], projects_attributes: [:id, :company_id, :name, :done, :_destroy])
+      params.require(:company).permit(:id, :name, staff_members_attributes: [:id, :company_id, :name, :_destroy], projects_attributes: [:id, :company_id, :name, :shortname, :_destroy])
     end
 end
+
