@@ -16,7 +16,7 @@ class CompaniesController < ApplicationController
   end
 
   def create
-    @company = current_user.companies.new(company_params)
+    @companies = current_user.companies.new(company_params)
 
     respond_to do |format|
       if @company.save
