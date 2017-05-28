@@ -1,4 +1,6 @@
-describe Company do
+require "spec_helper"
+
+RSpec.describe Company, :type => :model do
   subject {create(:company)}
 	context "associations" do
 		it {should belong_to(:user)}
