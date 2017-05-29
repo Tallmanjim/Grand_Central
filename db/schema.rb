@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20170526114650) do
     t.integer  "company_id"
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
-    t.string   "shortname",  default: "f"
+    t.string   "shortname"
     t.index ["company_id"], name: "index_projects_on_company_id", using: :btree
   end
 

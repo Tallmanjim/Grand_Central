@@ -58,8 +58,16 @@
 			    <% if (@company.persisted? rescue false) && !(["edit", "update"].include?(action_name) && controller_name == "companies") %>
 			      <div class="card">
 			        <div class="col-8">
+			      		<i class="fa fa-plus-square-o fa-fw"></i>
+			          <%= link_to "New Staff Member", edit_company_path(@company) %>
+			      </div>
+			    <% if (@company.persisted? rescue false) && !(["edit", "update"].include?(action_name) && controller_name == "companies") %>
+			      <div class="card">
+			        <div class="col-8">
 			      		<i class="fa fa-pencil-square-o  fa-fw"></i>
 			          <%= link_to "Edit Company", edit_company_path(@company) %>
+			        </div>
+			    <% end %> 
 			        </div>
 			      </div>
 			    <% end %> 

@@ -3,7 +3,7 @@ describe StaffMember do
 	context "associations" do
 		it {should belong_to(:company)}
 	end
-	decribe "attributes" do
+	describe "attributes" do
 		context "name" do 
 			it "is 2 or more characters" do
 			  subject.name = ""

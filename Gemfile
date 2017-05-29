@@ -34,7 +34,7 @@ gem "font-awesome-rails"
 
 gem 'cocoon', '~> 1.2', '>= 1.2.10'
 
-gem 'haml', '~> 5.0', '>= 5.0.1'
+gem 'shoulda'
 
 
 # group :test do
